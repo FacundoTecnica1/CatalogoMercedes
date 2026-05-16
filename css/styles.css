@@ -81,7 +81,7 @@ nav, .nav-lista li{
 
 .submenu{
     display: none;
-    background-color: #1a1a1a;
+    background-color: black;
     margin-left: 15px;
     border-left: 2px solid black;
 }
