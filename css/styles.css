@@ -200,15 +200,17 @@ footer {
 .slides {
     display: flex;
     height: 100%;
+    width: 400%;
     animation: carrusel 16s infinite;
+    will-change: transform;
 }
 
 .slides img {
-    width: 100%;
-    min-width: 100%;
+    width: 25%; 
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    flex-shrink: 0; 
 }
 
 @keyframes carrusel {
