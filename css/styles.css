@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
@@ -12,16 +12,16 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container-principal{
+.container-principal {
     display: grid;
     grid-template-columns: 240px 1fr;
 }
 
-.btn-hamburguesa, #menu-hamburguesa{
+.btn-hamburguesa, #menu-hamburguesa {
     display: none;
 }
 
-header{
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,24 +32,23 @@ header{
     z-index: 20;
 }
 
-header h1{
+header h1 {
     font-size: 34px;
     color: white;
-   
 }
 
-.logo{ 
+.logo { 
     width: 100px;
     height: auto;
 }
 
-nav{
+nav {
     background-color: black;
     min-height: 100%;
     border-right: 2px solid black;
 }
 
-.titulo-nav{
+.titulo-nav {
     text-align: center;
     background-color: #1a1a1a;
     padding: 20px;
@@ -59,16 +58,16 @@ nav{
     border-bottom: 2px solid black;
 }
 
-.nav-lista, .submenu{
+.nav-lista, .submenu {
     list-style: none;
 }
 
-nav, .nav-lista li{
+nav, .nav-lista li {
     border-bottom: 2px solid black;
     background-color: white;
 }
 
-.nav-lista li a{
+.nav-lista li a {
     display: block;
     padding: 15px;
     text-decoration: none;
@@ -77,28 +76,28 @@ nav, .nav-lista li{
     font-weight: bold;
 }
 
-.nav-lista li a:hover{
+.nav-lista li a:hover {
     background-color: #2b2b2b;
     color: white;
 }
 
-.submenu{
+.submenu {
     display: none;
     background-color: black;
     margin-left: 15px;
     border-left: 2px solid black;
 }
 
-.submenu li a{
+.submenu li a {
     font-size: 14px;
     padding-left: 25px;
 }
 
-.nav-lista li:hover .submenu{
+.nav-lista li:hover .submenu {
     display: block;
 }
 
-main{
+main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 25px;
@@ -107,7 +106,7 @@ main{
     border: 2px solid black;
 }
 
-.seccion-auto{
+.seccion-auto {
     display: flex;
     flex-direction: column;
     min-width: 320px;
@@ -116,16 +115,15 @@ main{
     border: 2px solid black;
 }
 
-.seccion-auto:hover{
-    /*una posicion más arriba cuando pasas el mouse*/
+.seccion-auto:hover {
     transform: translateY(-8px);
 }
 
-.link-auto{
+.link-auto {
     text-decoration: none;
 }
 
-.img-auto{
+.img-auto {
     width: 100%;
     height: 200px;
     object-fit: contain;
@@ -134,7 +132,7 @@ main{
     border-bottom: 2px solid black;
 }
 
-.inicio{
+.inicio {
     grid-column: 1 / -1; 
     background-color: #111111;
     padding: 25px;
@@ -142,7 +140,7 @@ main{
     border: 2px solid black;
 }
 
-.inicio h2{
+.inicio h2 {
     margin-bottom: 15px;
     color: white;
     font-size: 30px;
@@ -150,7 +148,7 @@ main{
     letter-spacing: 1px;
 }
 
-.inicio h3{
+.inicio h3 {
     margin-bottom: 10px;
     margin-top: 15px;
     font-size: 22px;
@@ -158,29 +156,29 @@ main{
     color: white;
 }
 
-.inicio p{
+.inicio p {
     font-size: 16px;
     line-height: 1.7;
 }
 
-.contenido-auto{
+.contenido-auto {
     padding: 20px;
 }
 
-.contenido-auto h2{
+.contenido-auto h2 {
     color: white;
     margin-bottom: 12px;
     font-size: 26px;
     font-weight: bold;
 }
 
-.contenido-auto p{
+.contenido-auto p {
     line-height: 1.6;
     color: white;
     font-size: 15px;
 }
 
-footer{
+footer {
     background-color: black;
     padding: 20px;
     text-align: center;
@@ -191,151 +189,147 @@ footer{
 }
 
 
-@media(max-width:768px){
+.carrusel {
+    grid-column: 1 / -1;
+    width: 100%;
+    aspect-ratio: 12 / 5; 
+    max-height: 450px;
+    overflow: hidden;
+}
 
-    .container-principal{
+.slides {
+    display: flex;
+    height: 100%;
+    animation: carrusel 16s infinite;
+}
+
+.slides img {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+@keyframes carrusel {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-100%); }
+    50%, 70% { transform: translateX(-200%); }
+    75%, 95% { transform: translateX(-300%); }
+    100% { transform: translateX(0); }
+}
+
+
+
+@media (max-width: 768px) {
+
+    .container-principal {
         grid-template-columns: 1fr;
     }
 
-    .btn-hamburguesa{
+    .btn-hamburguesa {
         display: block;
         font-size: 30px;
         cursor: pointer;
         color: white;
     }
 
-    header{
+    header {
         position: sticky;
         top: 0;
+        padding: 15px 20px;
     }
 
-    header h1{
+    header h1 {
         font-size: 26px;
     }
 
-    nav{
+    nav {
         display: block;
-        position: fixed;
-        top: 70px;
-        left: 0;
+        position: fixed;  
+        min-height: 20%;
         width: 100%;
-        height: 100vh;
         overflow-y: auto;
         background-color: white;
-        transform: translateY(-100%);
+        transform: translateY(-110%);
         transition: transform 0.3s ease;
         z-index: 10;
     }
 
-    #menu-hamburguesa:checked ~ .container-principal nav{
+    #menu-hamburguesa:checked ~ .container-principal nav {
         transform: translateY(0);
     }
 
-    .nav-lista{
+
+    .nav-lista {
         display: block;
     }
 
-    .nav-lista li{
+    .nav-lista li {
         width: 100%;
         border-bottom: 2px solid black;
     }
 
-    .submenu{
+    .submenu {
         position: static;
         width: 100%;
     }
 
-    main{
+    main {
         grid-template-columns: 1fr 1fr;
         padding: 20px;
         gap: 20px;
     }
 
-    .seccion-auto{
+    .seccion-auto {
         min-width: 0;
     }
 
-    .img-auto{
-        height: 220px;
+    .carrusel {
+        aspect-ratio: 16 / 9;
+        max-height: 280px;
     }
 
+    .img-auto {
+        height: 200px;
+    }
 }
 
-@media(max-width:480px){
 
-    .container-principal{
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 480px) {
 
-    .btn-hamburguesa{
-        display: block;
-        font-size: 30px;
-        cursor: pointer;
-        color: white;
-    }
-
-    header{
-        position: sticky;
-        top: 0;
-        padding: 15px;
-    }
-
-    header h1{
+    header h1 {
         font-size: 22px;
     }
 
-    nav{
-        display: block;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        overflow-y: auto;
-        background-color: white;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-        z-index: 10;
-    }
-
-    #menu-hamburguesa:checked ~ .container-principal nav{
-        transform: translateY(0);
-    }
-
-    .nav-lista{
-        display: block;
-    }
-
-    .nav-lista li{
-        width: 100%;
-        border-bottom: 2px solid black;
-    }
-
-    .submenu{
-        position: static;
-        width: 100%;
-    }
-
-    main{
+    main {
         grid-template-columns: 1fr;
         padding: 15px;
         gap: 15px;
     }
 
-    .seccion-auto{
-        min-width: 0;
+    .carrusel {
+        aspect-ratio: 4 / 3;
+        max-height: 220px;
     }
 
-    .img-auto{
+    .inicio h2 {
+        font-size: 24px;
+    }
+
+    .inicio p {
+        font-size: 15px;
+    }
+
+    .img-auto {
         height: 180px;
     }
 
-    .contenido-auto h2{
-        font-size: 20px;
+    .contenido-auto h2 {
+        font-size: 22px;
     }
 
-    .contenido-auto p{
+    .contenido-auto p {
         font-size: 14px;
     }
-
 }
