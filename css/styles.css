@@ -1,34 +1,42 @@
+
+/*Elimina márgenes y rellenos que vienen por defecto*/
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
+
 
 body {
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
+    grid-template-rows: auto 1fr auto; /*Esta es la estructura de toda la página en 3 filas: header, main y footer */
+    min-height: 100vh; /*Hace que el footer siempre esté al final*/
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*Layout principal*/
 .container-principal {
     display: grid;
+    /*Crea una columna que esta fija */
+    /*Para el menú lateral 240px y otra flexible para los demás contenidos */
     grid-template-columns: 240px 1fr;
 }
 
+/*Se desactiva el menú hamburguesa*/
 .btn-hamburguesa, #menu-hamburguesa {
     display: none;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /*Alinea logo y título horizontalmente */
+    justify-content: space-between; /* Espacia logo y título a los extremos */
+    align-items: center; 
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     background-color: black;
     padding: 15px 30px;
-    z-index: 20;
+    z-index: 20; 
+    /*Hace que el header esté por encima de otros elementos */
+    /*Hace que no se deforme el header cuando se utilice en pantallas pequeñas */
 }
 
 header h1 {
@@ -41,6 +49,8 @@ header h1 {
     height: auto;
 }
 
+/*Menu*/
+
 nav {
     background-color: black;
     min-height: 100%;
@@ -52,7 +62,7 @@ nav {
     background-color: #1a1a1a;
     padding: 20px;
     font-size: 28px;
-    font-weight: bold;
+    font-weight: bold; 
     color: white;
     border-bottom: 2px solid black;
 }
@@ -71,7 +81,7 @@ nav, .nav-lista li {
     padding: 15px;
     text-decoration: none;
     color: black;
-    transition: 0.3s;
+    transition: 0.3s; /*Animación suave al pasar el mouse */
     font-weight: bold;
 }
 
@@ -81,7 +91,7 @@ nav, .nav-lista li {
 }
 
 .submenu {
-    display: none;
+    display: none; /* Oculta el submenú al principio*/
     background-color: black;
     margin-left: 15px;
     border-left: 2px solid black;
@@ -92,13 +102,16 @@ nav, .nav-lista li {
     padding-left: 25px;
 }
 
+/*Al poner el mouse sobre el padre (en este caso Modelos AMG), el submenu cambia a bloque y se vuelve visible*/
 .nav-lista li:hover .submenu {
     display: block;
 }
 
+/*Contenido*/
+
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; /*Muestra las tarjeta en tres columnas*/
     gap: 25px;
     padding: 30px;
     background-color: white;
@@ -106,8 +119,8 @@ main {
 }
 
 .seccion-auto {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Pone la imagen y texto dentro de la tarjeta verticalmente */
+    flex-direction: column; /*Alinea las tarjetas una debajo de otra*/
     min-width: 320px;
     background-color: #111111;
     overflow: hidden;
@@ -116,6 +129,7 @@ main {
 
 .seccion-auto:hover {
     transform: translateY(-8px);
+    /* Cuando pasas el mouse se mueve un poco para arriba la tarjeta*/
 }
 
 .link-auto {
@@ -125,14 +139,14 @@ main {
 .img-auto {
     width: 100%;
     height: 200px;
-    object-fit: contain;
+    object-fit: contain; /*Sirve para que no se recorte la imagen del auto*/
     display: block;
     background: grey;
     border-bottom: 2px solid black;
 }
 
 .inicio {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1; /*Ocupa todo el ancho de las columnas*/
     background-color: #111111;
     padding: 25px;
     color: white;
@@ -177,64 +191,75 @@ main {
     font-size: 15px;
 }
 
+/*Pie de la página*/
 footer {
     background-color: black;
     padding: 20px;
-    text-align: center;
-    border-top: 3px solid black;
-    border: 2px solid black;
+    text-align: center;;
     color: white;
     font-size: 14px;
 }
 
-
+/*Carrusel*/
 .carrusel {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /*Ocupa el ancho de las tres columnas*/
     width: 100%;
-    aspect-ratio: 12 / 5; 
+    aspect-ratio: 12 / 5; /*Mantiene la relación aspecto*/
+    /*Sirve para que el carrusel mantenga el tamaño de la imagen*/
     max-height: 450px;
     overflow: hidden;
+    /*Recorta las fotos que no caben en el ancho del carrusel*/
 }
 
 .slides {
-    display: flex;
+    display: flex; /*Pone las fotos en fila una al lado de la otra*/
     height: 100%;
-    width: 400%;
+    width: 400%; 
     animation: carrusel 16s infinite;
-    will-change: transform;
+    will-change: transform; /*Sirve para que no se trabe la animación*/
 }
 
 .slides img {
     width: 25%; 
     height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    object-fit: cover; /*Recorta la imagen para llenar el espacio sin deformarse*/
+    object-position: center center;/*Centra el recorte de la imagen*/
 }
 
 @keyframes carrusel {
-    0%, 20% { transform: translateX(0); }
-    25%, 45% { transform: translateX(-25%); }
-    50%, 70% { transform: translateX(-50%); }
-    75%, 95% { transform: translateX(-75%); }
+    /*Muestra la primera foto (0% al 20%) */
+    0%, 20% { transform: translateX(0); } 
+
+    /*Va a la segunda foto (25% al 45%) */
+    25%, 45% { transform: translateX(-25%); } 
+
+    /*Se desplaza a la tercera foto (50% al 70%) */
+    50%, 70% { transform: translateX(-50%); } 
+
+    /* Termina en la cuarta foto (75% al 95%) */
+    75%, 95% { transform: translateX(-75%); } 
+
+    /*Vuelve al inicio (100%) */
     100% { transform: translateX(0); }
 }
 
 
-
+/*Responsive tablet*/
 @media (max-width: 768px) {
 
     .container-principal {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
+        /*El layout pasa a una columna*/
     }
 
     .btn-hamburguesa {
-        display: block;
+        display: block; /*Muestra el boton hamburguesa*/
         font-size: 30px;
         color: white;
     }
 
     header {
-        position: sticky;
+        position: sticky; /*Fija el header cuando scrolleas*/
         top: 0;
         padding: 15px 20px;
     }
@@ -245,16 +270,17 @@ footer {
 
     nav {
         display: block;
-        position: fixed;  
+        position: fixed; /*Deja el menú estatico*/
+        /*No uso el sticky pq no sirve para menús que se desplegan*/
         min-height: 20%;
         width: 100%;
-        overflow-y: auto;
         background-color: white;
-        transform: translateY(-110%);
+        transform: translateY(-110%); /*Oculta el menú arriba fuera de pantalla*/
         transition: transform 0.3s ease;
         z-index: 10;
     }
 
+    /*Si el checkbox está puesto, se mueve el menú hacia abajo (posicion 0)*/
     #menu-hamburguesa:checked ~ .container-principal nav {
         transform: translateY(0);
     }
@@ -275,7 +301,7 @@ footer {
     }
 
     main {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /*Las tarjetas se muestran en 2 columnas*/
         padding: 20px;
         gap: 20px;
     }
@@ -294,7 +320,7 @@ footer {
     }
 }
 
-
+/*Responsive en Celulares*/
 @media (max-width: 480px) {
 
     header h1 {
@@ -302,7 +328,7 @@ footer {
     }
 
     main {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /*Se muestra todo en una columna*/
         padding: 15px;
         gap: 15px;
     }

@@ -1,7 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body{
@@ -60,11 +59,13 @@ main{
     background-color: black;
 }
 
+/*La imagen del auto no aparece pq es para el responsive*/
 .img-mobile{
     display: none;
     width: 100%;
     border-radius: 10px;
 }
+
 
 .info-auto{
     margin-top: 40px;
@@ -75,6 +76,7 @@ main{
     margin-bottom: 25px;
 }
 
+/*La información se muestra en 3 columnas*/
 .grid-info{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -111,7 +113,7 @@ footer{
     border-top: 2px solid black;
 }
 
-/* TABLET */
+/*Responsive tablet*/
 
 @media(max-width:768px){
 
@@ -123,17 +125,22 @@ footer{
         font-size: 24px;
     }
 
+    /*El modelo 3D no se muestra*/
     .modelo3d iframe{
         display: none;
     }
 
+    /*Se muestra la foto del auto*/
     .img-mobile{
         display: block;
 
     }
 
+    /*La información se muestra en dos columnas 
+    para que no se tenga que scrollear tanto*/
     .grid-info{
         grid-template-columns: 1fr 1fr;
+
     }
 
 }
